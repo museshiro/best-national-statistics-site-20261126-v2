@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Economy — GDP &amp; Growth · Indonesia in Numbers</title>
+<meta name="description" content="Indonesia's GDP: nominal and real growth 2015–2024, GDP per capita, and the 13 sectors behind a Rp22,139 trillion economy.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="economy">
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">Indonesia <span>in Numbers</span></a>
+    <p class="tagline">National Statistics Explorer · Data vintage 2024 · Sources: BPS, Bank Indonesia, World Bank</p>
+    <button class="theme-btn" id="theme-toggle" type="button">◐ Dark</button>
+  </div>
+  <nav class="site-nav" aria-label="Sections">
+    <div class="wrap">
+      <a href="index.html" data-nav="index">Dashboard</a>
+      <a href="economy.html" data-nav="economy">Economy</a>
+      <a href="trade.html" data-nav="trade">Trade</a>
+      <a href="population.html" data-nav="population">Population</a>
+      <a href="regions.html" data-nav="regions">Regions</a>
+      <a href="prices-money.html" data-nav="prices-money">Prices &amp; Money</a>
+      <a href="social.html" data-nav="social">Social</a>
+      <a href="about.html" data-nav="about">About &amp; Data</a>
+    </div>
+  </nav>
+</header>
+<main class="wrap">
+  <p class="crumbs"><a href="index.html">Dashboard</a> / Economy</p>
+  <h1>GDP &amp; Growth</h1>
+  <p class="lede">Indonesia's economy reached Rp22,139 trillion in 2024 — about US$1.40 trillion, or US$4.67 trillion at purchasing-power parity (IMF estimate). Real growth was 5.03%, the third straight year above 5%.</p>
+
+  <div class="toolbar">
+    <label for="year-select">Year in focus:</label>
+    <select class="year-select" id="year-select">
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024" selected>2024</option>
+    </select>
+    <span class="count">Change the year — KPIs and the nominal-GDP chart update together.</span>
+  </div>
+
+  <section class="kpi-strip" aria-label="Key indicators">
+    <div class="kpi" data-year-kpi="gdpNom"><div class="kpi-label">Nominal GDP</div><div class="kpi-value">Rp22,139 T</div><div class="kpi-sub">2024 · BPS</div></div>
+    <div class="kpi" data-year-kpi="growth"><div class="kpi-label">Real GDP growth</div><div class="kpi-value">5.03%</div><div class="kpi-sub">c-to-c · 2024</div></div>
+    <div class="kpi" data-year-kpi="gdpPc"><div class="kpi-label">GDP per capita</div><div class="kpi-value">Rp78.6 mn</div><div class="kpi-sub">≈ US$4,960 · 2024</div></div>
+    <div class="kpi"><div class="kpi-label">GDP (PPP)</div><div class="kpi-value">US$4.67 T</div><div class="kpi-sub">IMF estimate · 2024</div></div>
+  </section>
+
+  <div class="fact-band"><strong>Why it matters:</strong> Indonesia is the world's 16th-largest economy in nominal terms and 8th by purchasing-power parity — and the only G20 economy in Southeast Asia.</div>
+
+  <div class="tabs" data-tabgroup="gdp" role="tablist">
+    <button type="button" role="tab" data-tab="nominal" class="active" aria-selected="true">Nominal GDP</button>
+    <button type="button" role="tab" data-tab="real" aria-selected="false">Real growth</button>
+  </div>
+
+  <div data-tabpanel="gdp" data-panel="nominal">
+    <section class="chart-card">
+      <div class="chart-head"><h3>Nominal GDP <span class="unit">Rp trillion, 2015 to selected year</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-gdp-nominal"></div>
+      <p class="chart-note">Nominal GDP nearly doubled in a decade — Rp11,526 T in 2015 to Rp22,139 T in 2024 — despite the 2020 pandemic dip.</p>
+    </section>
+  </div>
+  <div data-tabpanel="gdp" data-panel="real" hidden>
+    <section class="chart-card">
+      <div class="chart-head"><h3>Real GDP growth <span class="unit">% per year, 2015–2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-gdp-real"></div>
+      <p class="chart-note">−2.07% in 2020 (COVID-19) and 5.03% in 2024 bracket the decade. The 2015–2019 average was about 5.0% a year.</p>
+    </section>
+  </div>
+
+  <section class="chart-card">
+    <div class="chart-head"><h3>GDP by sector <span class="unit">share of GDP, 2024 — all 13 sectors</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+    <div class="chart-holder" id="ch-sectors-full"></div>
+    <p class="chart-note">Manufacturing (19.0%), trade (12.8%) and agriculture (12.6%) are the three largest sectors. “Other services” (~9.3%) closes the total to 100%.</p>
+  </section>
+
+  <h2>Sectors in detail</h2>
+  <div class="toolbar">
+    <label for="sector-search">Search sectors:</label>
+    <input type="search" id="sector-search" data-search="#sector-table" data-count="#sector-count" placeholder="e.g. mining">
+    <span class="count" id="sector-count">showing 13 of 13</span>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table" id="sector-table" data-sortable>
+      <thead><tr><th data-sort>Sector</th><th data-sort data-num>Share of GDP (%)</th><th data-sort data-num>Value (Rp T, ≈)</th></tr></thead>
+      <tbody id="sector-tbody"></tbody>
+    </table>
+  </div>
+  <p class="src">Source: BPS, BRS No. 17/02/Th. XXVIII, 5 February 2025. Sector values are shares × Rp22,139 T, rounded.</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <h3>Site map</h3>
+    <nav class="sitemap" aria-label="Site map">
+      <a href="index.html">Dashboard</a><a href="economy.html">Economy — GDP &amp; Growth</a>
+      <a href="trade.html">Foreign Trade</a><a href="population.html">Population &amp; Demography</a>
+      <a href="regions.html">Regional Economy &amp; Wages</a><a href="prices-money.html">Prices &amp; Money</a>
+      <a href="social.html">Welfare &amp; Inequality</a><a href="about.html">About &amp; Data Dictionary</a>
+    </nav>
+    <p class="fineprint">Indonesia in Numbers — a static snapshot. Data: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower, World Bank, IMF, CIA World Factbook. Vintage 2024 (minimum wage 2025). No network requests: all charts are inline SVG, all data is in the site's own files.</p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script>
+/* Economy page script: nominal/real tabs, year-filtered GDP chart,
+   full 13-sector donut and the sortable sector table. */
+(function () {
+  var D = window.DATA;
+  window.renderYear = function (y) {
+    var yrs = D.years.filter(function (yy) { return yy <= y; });
+    window.Charts.render(document.getElementById("ch-gdp-nominal"), {
+      type: "columns", title: "Nominal GDP 2015–" + y, valueFmt: "int", endLabel: true,
+      labels: yrs.map(String),
+      series: [{ name: "Nominal GDP (Rp T)", color: "#1f4e79", values: yrs.map(function (yy) { return D.byYear[yy].gdpNom; }) }],
+      source: "BPS, 2015–2024"
+    });
+  };
+  window.Charts.render(document.getElementById("ch-gdp-real"), {
+    type: "line", title: "Real GDP growth 2015–2024", valueFmt: "pct1", endLabel: true,
+    labels: D.years.map(String),
+    series: [{ name: "Real GDP growth", color: "#0e6b6b", values: D.years.map(function (y) { return D.byYear[y].growth; }) }],
+    note: "2020: −2.07% (pandemic) · 2024: 5.03%", source: "BPS, 2015–2024"
+  });
+  window.Charts.render(document.getElementById("ch-sectors-full"), {
+    type: "donut", title: "GDP by sector 2024", valueFmt: "pct1", center: "100%", centerSub: "of GDP",
+    data: D.sectors.map(function (s) { return { name: s.name, value: s.share }; }),
+    source: "BPS, 2024"
+  });
+  var tbody = document.getElementById("sector-tbody");
+  tbody.innerHTML = D.sectors.map(function (s) {
+    var val = Math.round(s.share / 100 * 22139);
+    return "<tr><td>" + window.Charts.esc(s.name) + "</td><td data-value=\"" + s.share + "\">" + s.share.toFixed(1) + "%</td><td data-value=\"" + val + "\">" + val.toLocaleString("en-US") + "</td></tr>";
+  }).join("");
+})();
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
