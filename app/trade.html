@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foreign Trade · Indonesia in Numbers</title>
+<meta name="description" content="Indonesia's foreign trade 2020–2024: US$264.7 bn exports, top commodities, top partners, and five straight years of surplus.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="trade">
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">Indonesia <span>in Numbers</span></a>
+    <p class="tagline">National Statistics Explorer · Data vintage 2024 · Sources: BPS, Bank Indonesia, World Bank</p>
+    <button class="theme-btn" id="theme-toggle" type="button">◐ Dark</button>
+  </div>
+  <nav class="site-nav" aria-label="Sections">
+    <div class="wrap">
+      <a href="index.html" data-nav="index">Dashboard</a>
+      <a href="economy.html" data-nav="economy">Economy</a>
+      <a href="trade.html" data-nav="trade">Trade</a>
+      <a href="population.html" data-nav="population">Population</a>
+      <a href="regions.html" data-nav="regions">Regions</a>
+      <a href="prices-money.html" data-nav="prices-money">Prices &amp; Money</a>
+      <a href="social.html" data-nav="social">Social</a>
+      <a href="about.html" data-nav="about">About &amp; Data</a>
+    </div>
+  </nav>
+</header>
+<main class="wrap">
+  <p class="crumbs"><a href="index.html">Dashboard</a> / Trade</p>
+  <h1>Foreign Trade</h1>
+  <p class="lede">Indonesia exported US$264.7 billion of goods in 2024 and imported US$233.7 billion — a surplus of US$31.0 billion, the fifth straight year in surplus. Coal, palm oil and steel lead the export list; China takes nearly a quarter of all exports.</p>
+
+  <div class="toolbar">
+    <label for="year-select">Year in focus:</label>
+    <select class="year-select" id="year-select">
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024" selected>2024</option>
+    </select>
+    <span class="count">Change the year — the trade balance tiles update together.</span>
+  </div>
+
+  <section class="kpi-strip" aria-label="Key indicators">
+    <div class="kpi" data-year-kpi="exports"><div class="kpi-label">Exports of goods</div><div class="kpi-value">US$264.7 bn</div><div class="kpi-sub">2024 · BPS / World Bank</div></div>
+    <div class="kpi" data-year-kpi="imports"><div class="kpi-label">Imports of goods</div><div class="kpi-value">US$233.7 bn</div><div class="kpi-sub">2024 · BPS / World Bank</div></div>
+    <div class="kpi"><div class="kpi-label">Trade surplus</div><div class="kpi-value" id="kpi-surplus">US$31.0 bn</div><div class="kpi-sub" id="kpi-surplus-sub">2024 · exports − imports</div></div>
+    <div class="kpi"><div class="kpi-label">Top partner: China</div><div class="kpi-value">US$62.6 bn</div><div class="kpi-sub">23.7% of exports · 2024</div></div>
+    <div class="kpi"><div class="kpi-label">Top commodity: coal &amp; fuels</div><div class="kpi-value">US$44.0 bn</div><div class="kpi-sub">16.6% of exports · 2024</div></div>
+  </section>
+
+  <div class="tabs" data-tabgroup="trade" role="tablist">
+    <button type="button" role="tab" data-tab="exports" class="active" aria-selected="true">Exports</button>
+    <button type="button" role="tab" data-tab="imports" aria-selected="false">Imports</button>
+    <button type="button" role="tab" data-tab="balance" aria-selected="false">Balance</button>
+  </div>
+
+  <div data-tabpanel="trade" data-panel="exports">
+    <div class="grid-2">
+      <section class="chart-card">
+        <div class="chart-head"><h3>Top export commodities <span class="unit">US$ billion, 2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+        <div class="chart-holder" id="ch-commodities"></div>
+        <p class="chart-note">Mineral fuels (incl. coal) alone are US$44.0 bn — more than palm oil and steel combined.</p>
+      </section>
+      <section class="chart-card">
+        <div class="chart-head"><h3>Top export partners <span class="unit">US$ billion, 2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+        <div class="chart-holder" id="ch-partners"></div>
+        <p class="chart-note">China (US$62.6 bn) buys more than the next three partners combined.</p>
+      </section>
+    </div>
+  </div>
+  <div data-tabpanel="trade" data-panel="imports" hidden>
+    <section class="chart-card">
+      <div class="chart-head"><h3>Exports vs imports <span class="unit">US$ billion, 2020–2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-flows"></div>
+      <p class="chart-note">Exports peaked at US$292.0 bn in 2022 on the commodity boom, then eased; imports tracked the same cycle.</p>
+    </section>
+  </div>
+  <div data-tabpanel="trade" data-panel="balance" hidden>
+    <section class="chart-card">
+      <div class="chart-head"><h3>Trade surplus <span class="unit">US$ billion, 2020–2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-surplus"></div>
+      <p class="chart-note">The surplus peaked at US$54.6 bn in 2022 and narrowed to US$31.0 bn in 2024 as imports recovered.</p>
+    </section>
+  </div>
+
+  <h2>Commodities in detail (HS codes)</h2>
+  <div class="toolbar">
+    <label for="hs-search">Search commodities:</label>
+    <input type="search" id="hs-search" data-search="#hs-table" data-count="#hs-count" placeholder="e.g. palm, steel">
+    <span class="count" id="hs-count">showing 10 of 10</span>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table" id="hs-table" data-sortable>
+      <thead><tr><th data-sort>Commodity</th><th data-sort>HS chapter</th><th data-sort data-num>Exports 2024 (US$ bn)</th><th data-sort data-num>Share of exports (%)</th></tr></thead>
+      <tbody id="hs-tbody"></tbody>
+    </table>
+  </div>
+  <p class="src">Source: BPS / World Bank, 2024. Shares are of total goods exports (US$264.7 bn).</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <h3>Site map</h3>
+    <nav class="sitemap" aria-label="Site map">
+      <a href="index.html">Dashboard</a><a href="economy.html">Economy — GDP &amp; Growth</a>
+      <a href="trade.html">Foreign Trade</a><a href="population.html">Population &amp; Demography</a>
+      <a href="regions.html">Regional Economy &amp; Wages</a><a href="prices-money.html">Prices &amp; Money</a>
+      <a href="social.html">Welfare &amp; Inequality</a><a href="about.html">About &amp; Data Dictionary</a>
+    </nav>
+    <p class="fineprint">Indonesia in Numbers — a static snapshot. Data: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower, World Bank, IMF, CIA World Factbook. Vintage 2024 (minimum wage 2025). No network requests: all charts are inline SVG, all data is in the site's own files.</p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script>
+/* Trade page script: exports/imports/balance tabs, four charts, the
+   year-filtered surplus tile and the HS commodity table. */
+(function () {
+  var D = window.DATA;
+  window.renderYear = function (y) {
+    var row = D.trade.filter(function (t) { return t.year === y; })[0];
+    var tile = document.getElementById("kpi-surplus");
+    var sub = document.getElementById("kpi-surplus-sub");
+    if (row && tile) tile.textContent = "US$" + row.surplus.toFixed(1) + " bn";
+    if (row && sub) sub.textContent = y + " · exports − imports";
+  };
+  window.Charts.render(document.getElementById("ch-commodities"), {
+    type: "hbar", title: "Top export commodities 2024", valueFmt: "usd",
+    data: D.commodities.map(function (c) { return { name: c.name, value: c.value }; }),
+    source: "BPS / World Bank, 2024"
+  });
+  window.Charts.render(document.getElementById("ch-partners"), {
+    type: "hbar", title: "Top export partners 2024", valueFmt: "usd",
+    data: D.partners.map(function (p) { return { name: p.name, value: p.value }; }),
+    source: "BPS / World Bank, 2024"
+  });
+  window.Charts.render(document.getElementById("ch-flows"), {
+    type: "columns", title: "Exports vs imports 2020–2024", valueFmt: "usd",
+    labels: D.trade.map(function (t) { return String(t.year); }),
+    series: [
+      { name: "Exports", color: "#0e6b6b", values: D.trade.map(function (t) { return t.exports; }) },
+      { name: "Imports", color: "#1f4e79", values: D.trade.map(function (t) { return t.imports; }) }
+    ],
+    source: "World Bank, 2020–2024"
+  });
+  window.Charts.render(document.getElementById("ch-surplus"), {
+    type: "line", title: "Trade surplus 2020–2024", valueFmt: "usd", endLabel: true,
+    labels: D.trade.map(function (t) { return String(t.year); }),
+    series: [{ name: "Surplus", color: "#b3392e", values: D.trade.map(function (t) { return t.surplus; }) }],
+    source: "World Bank, 2020–2024 (derived: exports − imports)"
+  });
+  var tbody = document.getElementById("hs-tbody");
+  tbody.innerHTML = D.commodities.map(function (c) {
+    var share = (c.value / 264.7 * 100).toFixed(1);
+    return "<tr><td>" + window.Charts.esc(c.name) + "</td><td>" + c.hs + "</td><td data-value=\"" + c.value + "\">" + c.value.toFixed(1) + "</td><td data-value=\"" + share + "\">" + share + "%</td></tr>";
+  }).join("");
+})();
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
