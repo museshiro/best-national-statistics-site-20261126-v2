@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About &amp; Data Dictionary · Indonesia in Numbers</title>
+<meta name="description" content="About Indonesia in Numbers: sources, data vintage, units and definitions for every indicator on the site.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="about">
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">Indonesia <span>in Numbers</span></a>
+    <p class="tagline">National Statistics Explorer · Data vintage 2024 · Sources: BPS, Bank Indonesia, World Bank</p>
+    <button class="theme-btn" id="theme-toggle" type="button">◐ Dark</button>
+  </div>
+  <nav class="site-nav" aria-label="Sections">
+    <div class="wrap">
+      <a href="index.html" data-nav="index">Dashboard</a>
+      <a href="economy.html" data-nav="economy">Economy</a>
+      <a href="trade.html" data-nav="trade">Trade</a>
+      <a href="population.html" data-nav="population">Population</a>
+      <a href="regions.html" data-nav="regions">Regions</a>
+      <a href="prices-money.html" data-nav="prices-money">Prices &amp; Money</a>
+      <a href="social.html" data-nav="social">Social</a>
+      <a href="about.html" data-nav="about">About &amp; Data</a>
+    </div>
+  </nav>
+</header>
+<main class="wrap">
+  <p class="crumbs"><a href="index.html">Dashboard</a> / About &amp; Data</p>
+  <h1>About &amp; Data Dictionary</h1>
+  <p class="lede">Indonesia in Numbers is a static snapshot of Indonesia's official statistics, built to be explored: eight pages, 26 charts, and every figure traceable to its source. It makes no network requests — every chart is inline SVG and every number lives in the site's own files.</p>
+
+  <h2>Sources</h2>
+  <ul class="tight">
+    <li><strong>BPS — Statistics Indonesia</strong> (bps.go.id): GDP, population, inflation, unemployment, poverty, Gini, HDI, GRDP. Key releases: BRS No. 17/02/Th. XXVIII (GDP, 5 Feb 2025) and BRS No. 07/01/Th. XXVIII (poverty, 15 Jan 2025).</li>
+    <li><strong>Bank Indonesia</strong> (bi.go.id): BI-Rate, foreign-exchange reserves, exchange rate.</li>
+    <li><strong>Ministry of Manpower</strong>: provincial minimum wage (UMP) 2025, under Permenaker No. 16/2024 (national average +6.5%).</li>
+    <li><strong>World Bank</strong>: goods trade 2020–2024 (exports, imports, partners, commodities).</li>
+    <li><strong>IMF / CIA World Factbook</strong>: GDP at purchasing-power parity (IMF estimate, US$4.67 T) and the annual-average exchange rate.</li>
+  </ul>
+
+  <h2>Data vintage &amp; conventions</h2>
+  <ul class="tight">
+    <li><strong>Vintage 2024</strong> for all headline figures, from BPS releases of February 2025. The single exception is the minimum wage, which is 2025 (set in December 2024) and is labelled as such everywhere it appears.</li>
+    <li><strong>Units:</strong> Rp T = trillion rupiah; Rp mn = million rupiah; bn = billion US dollars; mn = million people. “c-to-c” means cumulative-to-cumulative (full-year growth).</li>
+    <li><strong>“≈”</strong> marks a rounded or derived figure (for example GRDP per capita derived from rounded GRDP and population). Exact BPS figures carry no mark.</li>
+    <li><strong>Poverty:</strong> September 2024 is 8.57% (March 2024 was 9.03%). The 8.57% figure is the lowest since records began in 1960.</li>
+    <li><strong>Unverified, not shown:</strong> the 2025 minimum wage for Highland Papua (Papua Pegunungan) could not be verified and is omitted rather than guessed.</li>
+    <li><strong>Static snapshot:</strong> this site is plain files under app/ — no build step, no fonts, no analytics, no images from the network, no requests of any kind.</li>
+  </ul>
+
+  <h2>Definitions</h2>
+  <dl class="def-list">
+    <dt>Nominal GDP</dt><dd>Gross domestic product at current prices, in rupiah. 2024: Rp22,139 trillion (≈ US$1.40 trillion).</dd>
+    <dt>Real GDP growth (c-to-c)</dt><dd>Year-on-year change in GDP at constant prices for the full year. 2024: 5.03%.</dd>
+    <dt>GDP per capita</dt><dd>Nominal GDP divided by mid-year population. 2024: Rp78.6 million (≈ US$4,960).</dd>
+    <dt>Inflation (CPI, y-on-y)</dt><dd>Change in the consumer price index versus the same month a year earlier. December 2024: 1.57%.</dd>
+    <dt>Open unemployment rate (TPT)</dt><dd>Unemployed as a share of the labour force. August 2024: 4.91%.</dd>
+    <dt>Trade balance</dt><dd>Exports of goods minus imports of goods. 2024: US$264.7 bn − US$233.7 bn = US$31.0 bn surplus.</dd>
+    <dt>GRDP (PDRB)</dt><dd>Gross Regional Domestic Product — GDP measured for a province. Jakarta 2024: ≈ Rp3,680 trillion.</dd>
+    <dt>UMP</dt><dd>Upah Minimum Provinsi — the provincial minimum wage, set annually. 2025: Rp2,169,349 (Central Java, lowest verified) to Rp5,396,761 (Jakarta).</dd>
+    <dt>Human Development Index (IPM)</dt><dd>BPS composite of health, education and living standards (0–100). 2024: 75.02.</dd>
+    <dt>Gini ratio</dt><dd>Measure of income inequality (0 = perfect equality). March 2024: 0.379.</dd>
+    <dt>Poverty line</dt><dd>Minimum monthly expenditure per capita to meet basic needs. September 2024: Rp595,242.</dd>
+    <dt>BI-Rate</dt><dd>Bank Indonesia's policy interest rate. December 2024: 6.00%.</dd>
+    <dt>FX reserves</dt><dd>Bank Indonesia's foreign-exchange reserves. December 2024: US$155.7 billion.</dd>
+  </dl>
+
+  <h2>Coverage: all 38 provinces</h2>
+  <p>The site covers Indonesia's 38 provinces. Verified province-level figures (population, GRDP, minimum wage, HDI) are shown on the Population, Regions and Social pages; the full list is:</p>
+  <ul class="prov-list" id="prov-list"></ul>
+  <p class="chart-note">Province names follow the official BPS list, including the four new Papuan provinces created in 2022.</p>
+
+  <h2>Site map</h2>
+  <nav class="sitemap" aria-label="Site map">
+    <a href="index.html">Dashboard — 8 KPIs, 4 charts, year-by-year table</a>
+    <a href="economy.html">Economy — GDP, growth, 13 sectors</a>
+    <a href="trade.html">Foreign Trade — commodities, partners, surplus</a>
+    <a href="population.html">Population — 2010–2024, provinces, islands</a>
+    <a href="regions.html">Regions — GRDP, GRDP per capita, UMP 2025</a>
+    <a href="prices-money.html">Prices &amp; Money — inflation, BI-Rate, rupiah, reserves</a>
+    <a href="social.html">Welfare — HDI, Gini, poverty, provincial HDI</a>
+    <a href="about.html">About &amp; Data Dictionary — this page</a>
+  </nav>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <h3>Site map</h3>
+    <nav class="sitemap" aria-label="Site map">
+      <a href="index.html">Dashboard</a><a href="economy.html">Economy — GDP &amp; Growth</a>
+      <a href="trade.html">Foreign Trade</a><a href="population.html">Population &amp; Demography</a>
+      <a href="regions.html">Regional Economy &amp; Wages</a><a href="prices-money.html">Prices &amp; Money</a>
+      <a href="social.html">Welfare &amp; Inequality</a><a href="about.html">About &amp; Data Dictionary</a>
+    </nav>
+    <p class="fineprint">Indonesia in Numbers — a static snapshot. Data: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower, World Bank, IMF, CIA World Factbook. Vintage 2024 (minimum wage 2025). No network requests: all charts are inline SVG, all data is in the site's own files.</p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script>
+/* About page script: fills the 38-province coverage list from data.js. */
+(function () {
+  var list = document.getElementById("prov-list");
+  list.innerHTML = window.DATA.provincesAll.map(function (name) {
+    return "<li>" + window.Charts.esc(name) + "</li>";
+  }).join("");
+})();
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
