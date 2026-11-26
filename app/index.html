@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indonesia in Numbers — National Statistics Explorer</title>
+<meta name="description" content="Indonesia's national statistics, vintage 2024: GDP, population, trade, prices, welfare and regions — verified BPS, Bank Indonesia and World Bank figures.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="index">
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">Indonesia <span>in Numbers</span></a>
+    <p class="tagline">National Statistics Explorer · Data vintage 2024 · Sources: BPS, Bank Indonesia, World Bank</p>
+    <button class="theme-btn" id="theme-toggle" type="button">◐ Dark</button>
+  </div>
+  <nav class="site-nav" aria-label="Sections">
+    <div class="wrap">
+      <a href="index.html" data-nav="index">Dashboard</a>
+      <a href="economy.html" data-nav="economy">Economy</a>
+      <a href="trade.html" data-nav="trade">Trade</a>
+      <a href="population.html" data-nav="population">Population</a>
+      <a href="regions.html" data-nav="regions">Regions</a>
+      <a href="prices-money.html" data-nav="prices-money">Prices &amp; Money</a>
+      <a href="social.html" data-nav="social">Social</a>
+      <a href="about.html" data-nav="about">About &amp; Data</a>
+    </div>
+  </nav>
+</header>
+<main class="wrap">
+  <p class="crumbs">Indonesia in Numbers / Dashboard</p>
+  <h1>Indonesia in Numbers</h1>
+  <p class="lede">The economy, people and trade of the world's fourth most populous country — 281.6 million people across 17,500+ islands and 38 provinces. Every figure below is a verified official statistic, vintage 2024.</p>
+
+  <div class="toolbar">
+    <label for="year-select">Year in focus:</label>
+    <select class="year-select" id="year-select">
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024" selected>2024</option>
+    </select>
+    <span class="count">Change the year — KPIs, charts and the table below update together.</span>
+  </div>
+
+  <section class="kpi-strip" aria-label="Key indicators">
+    <div class="kpi"><div class="kpi-label">Nominal GDP</div><div class="kpi-value">Rp22,139 T</div><div class="kpi-sub">≈ US$1.40 trillion · 2024</div></div>
+    <div class="kpi" data-year-kpi="growth"><div class="kpi-label">Real GDP growth</div><div class="kpi-value">5.03%</div><div class="kpi-sub">c-to-c · 2024</div></div>
+    <div class="kpi" data-year-kpi="pop"><div class="kpi-label">Population</div><div class="kpi-value">281.6 mn</div><div class="kpi-sub">4th most populous · 2024</div></div>
+    <div class="kpi" data-year-kpi="infl"><div class="kpi-label">Inflation (Dec y-on-y)</div><div class="kpi-value">1.57%</div><div class="kpi-sub">CPI · Dec 2024</div></div>
+    <div class="kpi" data-year-kpi="unemp"><div class="kpi-label">Open unemployment</div><div class="kpi-value">4.91%</div><div class="kpi-sub">Aug 2024</div></div>
+    <div class="kpi"><div class="kpi-label">Exports of goods</div><div class="kpi-value">US$264.7 bn</div><div class="kpi-sub">Trade surplus US$31.0 bn · 2024</div></div>
+    <div class="kpi hl" data-year-kpi="gdpPc"><div class="kpi-label">GDP per capita</div><div class="kpi-value">Rp78.6 mn</div><div class="kpi-sub">≈ US$4,960 · 2024</div></div>
+    <div class="kpi hl"><div class="kpi-label">Poverty rate</div><div class="kpi-value">8.57%</div><div class="kpi-sub">Sep 2024 · lowest since 1960</div></div>
+  </section>
+
+  <div class="fact-band"><strong>Indonesia at a glance.</strong> <span id="focus-year">In 2024: growth 5.03%, population 281.6 million, inflation 1.57%, unemployment 4.91%.</span> The largest economy in ASEAN, the 4th most populous nation on earth, and a G20 member whose economy grew every year of the last decade except the pandemic year 2020 (−2.07%). Poverty fell to 8.57% in September 2024 — the lowest since records began in 1960.</div>
+
+  <div class="grid-2">
+    <section class="chart-card">
+      <div class="chart-head"><h3>Real GDP growth <span class="unit">% per year, 2019 to selected year</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-growth"></div>
+      <p class="chart-note">The 2020 dip (−2.07%) is the COVID-19 contraction; growth returned to above 5% in 2022–2024.</p>
+    </section>
+    <section class="chart-card">
+      <div class="chart-head"><h3>What makes the GDP <span class="unit">share of GDP by sector, 2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-sectors"></div>
+      <p class="chart-note">Manufacturing is the largest sector at 19.0%; the six largest sectors make up 70.4% of GDP.</p>
+    </section>
+  </div>
+
+  <div class="grid-2">
+    <section class="chart-card">
+      <div class="chart-head"><h3>Most populous provinces <span class="unit">million people, 2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-provinces"></div>
+      <p class="chart-note">West Java alone (50.3 mn) holds more people than most countries. <a href="population.html">See all population data →</a></p>
+    </section>
+    <section class="chart-card">
+      <div class="chart-head"><h3>Rupiah per US dollar <span class="unit">annual average, 2020–2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-fx"></div>
+      <p class="chart-note">The rupiah averaged Rp15,855 per US$ in 2024. <a href="prices-money.html">Prices &amp; money →</a></p>
+    </section>
+  </div>
+
+  <h2>Explore the statistics</h2>
+  <div class="explore-grid">
+    <a class="explore-card" href="economy.html"><h3>Economy</h3><p>GDP, growth and the 13 sectors behind it.</p><span class="stat">Rp22,139 T GDP</span></a>
+    <a class="explore-card" href="trade.html"><h3>Foreign Trade</h3><p>Commodities, partners and a five-year surplus.</p><span class="stat">US$31.0 bn surplus</span></a>
+    <a class="explore-card" href="population.html"><h3>Population</h3><p>281.6 million people, 38 provinces, 6 island groups.</p><span class="stat">237.6 → 281.6 mn since 2010</span></a>
+    <a class="explore-card" href="regions.html"><h3>Regions &amp; Wages</h3><p>GRDP by province and the 2025 minimum wage.</p><span class="stat">Jakarta GRDP Rp3,680 T</span></a>
+    <a class="explore-card" href="prices-money.html"><h3>Prices &amp; Money</h3><p>Inflation, the BI-Rate, the rupiah and reserves.</p><span class="stat">Inflation 1.57%</span></a>
+    <a class="explore-card" href="social.html"><h3>Welfare</h3><p>Human development, inequality and poverty.</p><span class="stat">HDI 75.02 · Gini 0.379</span></a>
+    <a class="explore-card" href="about.html"><h3>About &amp; Data</h3><p>Sources, definitions and the full sitemap.</p><span class="stat">38 provinces covered</span></a>
+  </div>
+
+  <h2>Indonesia, year by year</h2>
+  <p>Annual indicators 2015–2024. Click any column header to sort.</p>
+  <div class="table-wrap">
+    <table class="data-table" id="year-table" data-sortable>
+      <thead><tr><th data-sort>Year</th><th data-sort data-num>GDP growth %</th><th data-sort data-num>Population (mn)</th><th data-sort data-num>Inflation %</th><th data-sort data-num>Unemployment %</th><th data-sort data-num>Nominal GDP (Rp T)</th><th data-sort data-num>GDP per capita (Rp mn)</th></tr></thead>
+      <tbody id="year-tbody"></tbody>
+    </table>
+  </div>
+  <p class="src">Source: BPS (Statistics Indonesia), BRS releases 2015–2025; trade figures World Bank. GDP per capita rounded.</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <h3>Site map</h3>
+    <nav class="sitemap" aria-label="Site map">
+      <a href="index.html">Dashboard</a><a href="economy.html">Economy — GDP &amp; Growth</a>
+      <a href="trade.html">Foreign Trade</a><a href="population.html">Population &amp; Demography</a>
+      <a href="regions.html">Regional Economy &amp; Wages</a><a href="prices-money.html">Prices &amp; Money</a>
+      <a href="social.html">Welfare &amp; Inequality</a><a href="about.html">About &amp; Data Dictionary</a>
+    </nav>
+    <p class="fineprint">Indonesia in Numbers — a static snapshot. Data: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower, World Bank, IMF, CIA World Factbook. Vintage 2024 (minimum wage 2025). No network requests: all charts are inline SVG, all data is in the site's own files.</p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script>
+/* Dashboard page script: mounts the four charts, re-renders the growth
+   chart for the selected year, and fills the year-by-year table. */
+(function () {
+  var D = window.DATA;
+  var tbody = document.getElementById("year-tbody");
+  tbody.innerHTML = D.years.map(function (y) {
+    var r = D.byYear[y];
+    return "<tr><td>" + y + "</td><td data-value=\"" + r.growth + "\">" + r.growth.toFixed(2) + "%</td><td data-value=\"" + r.pop + "\">" + r.pop.toFixed(1) + "</td><td data-value=\"" + r.infl + "\">" + r.infl.toFixed(2) + "%</td><td data-value=\"" + r.unemp + "\">" + r.unemp.toFixed(2) + "%</td><td data-value=\"" + r.gdpNom + "\">" + r.gdpNom.toLocaleString("en-US") + "</td><td data-value=\"" + r.gdpPc + "\">" + r.gdpPc.toFixed(1) + "</td></tr>";
+  }).join("");
+
+  window.renderYear = function (y) {
+    var yrs = D.years.filter(function (yy) { return yy >= 2019 && yy <= y; });
+    window.Charts.render(document.getElementById("ch-growth"), {
+      type: "area", title: "Real GDP growth 2019–" + y, valueFmt: "pct1", endLabel: true,
+      labels: yrs.map(String),
+      series: [{ name: "Real GDP growth", color: "#0e6b6b", values: yrs.map(function (yy) { return D.byYear[yy].growth; }) }],
+      source: "BPS, 2015–2024"
+    });
+    var f = document.getElementById("focus-year");
+    var r = D.byYear[y];
+    if (f && r) f.textContent = "In " + y + ": growth " + r.growth.toFixed(2) + "%, population " + r.pop.toFixed(1) + " million, inflation " + r.infl.toFixed(2) + "%, unemployment " + r.unemp.toFixed(2) + "%.";
+  };
+
+  var top6 = D.sectors.slice(0, 6);
+  var rest = 100 - top6.reduce(function (a, s) { return a + s.share; }, 0);
+  var donutData = top6.map(function (s) { return { name: s.name, value: s.share }; });
+  donutData.push({ name: "Other (7 sectors)", value: +rest.toFixed(1) });
+  window.Charts.render(document.getElementById("ch-sectors"), {
+    type: "donut", title: "GDP by sector 2024", valueFmt: "pct1", center: "13", centerSub: "sectors",
+    data: donutData, source: "BPS, 2024"
+  });
+  window.Charts.render(document.getElementById("ch-provinces"), {
+    type: "hbar", title: "Most populous provinces 2024", valueFmt: "num1",
+    data: D.provincesPop.map(function (p) { return { name: p.name, value: p.pop }; }),
+    source: "BPS, 2024"
+  });
+  window.Charts.render(document.getElementById("ch-fx"), {
+    type: "line", title: "Rupiah per US dollar", valueFmt: "int", endLabel: true,
+    labels: D.fxAnnual.map(function (d) { return String(d.year); }),
+    series: [{ name: "Rp per US$", color: "#1f4e79", values: D.fxAnnual.map(function (d) { return d.value; }) }],
+    refLine: 16000, refLabel: "Rp16,000 reference", source: "CIA World Factbook (annual average); Bank Indonesia"
+  });
+})();
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
