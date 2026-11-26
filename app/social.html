@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welfare &amp; Inequality · Indonesia in Numbers</title>
+<meta name="description" content="Indonesia's welfare: Human Development Index 75.02, Gini 0.379, poverty 8.57% — the lowest since 1960 — and unemployment 4.91%.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="social">
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="index.html">Indonesia <span>in Numbers</span></a>
+    <p class="tagline">National Statistics Explorer · Data vintage 2024 · Sources: BPS, Bank Indonesia, World Bank</p>
+    <button class="theme-btn" id="theme-toggle" type="button">◐ Dark</button>
+  </div>
+  <nav class="site-nav" aria-label="Sections">
+    <div class="wrap">
+      <a href="index.html" data-nav="index">Dashboard</a>
+      <a href="economy.html" data-nav="economy">Economy</a>
+      <a href="trade.html" data-nav="trade">Trade</a>
+      <a href="population.html" data-nav="population">Population</a>
+      <a href="regions.html" data-nav="regions">Regions</a>
+      <a href="prices-money.html" data-nav="prices-money">Prices &amp; Money</a>
+      <a href="social.html" data-nav="social">Social</a>
+      <a href="about.html" data-nav="about">About &amp; Data</a>
+    </div>
+  </nav>
+</header>
+<main class="wrap">
+  <p class="crumbs"><a href="index.html">Dashboard</a> / Social</p>
+  <h1>Welfare &amp; Inequality</h1>
+  <p class="lede">The headline of 2024: poverty fell to 8.57% — 24.06 million people, the lowest rate since records began in 1960. Human development reached 75.02, inequality eased to a Gini of 0.379, and open unemployment fell to 4.91%.</p>
+
+  <div class="toolbar">
+    <label for="year-select">Year in focus:</label>
+    <select class="year-select" id="year-select">
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024" selected>2024</option>
+    </select>
+    <span class="count">Change the year — the welfare tiles update together.</span>
+  </div>
+
+  <section class="kpi-strip" aria-label="Key indicators">
+    <div class="kpi"><div class="kpi-label">Human Development Index</div><div class="kpi-value" id="kpi-hdi">75.02</div><div class="kpi-sub" id="kpi-hdi-sub">2024 · up from 74.39</div></div>
+    <div class="kpi"><div class="kpi-label">Gini ratio</div><div class="kpi-value" id="kpi-gini">0.379</div><div class="kpi-sub" id="kpi-gini-sub">Mar 2024 · down from 0.408 (2015)</div></div>
+    <div class="kpi hl"><div class="kpi-label">Poverty rate</div><div class="kpi-value" id="kpi-pov">8.57%</div><div class="kpi-sub" id="kpi-pov-sub">Sep 2024 · lowest since 1960</div></div>
+    <div class="kpi"><div class="kpi-label">Life expectancy</div><div class="kpi-value">74.15 yrs</div><div class="kpi-sub">2024 · BPS</div></div>
+  </section>
+
+  <div class="fact-band"><strong>Behind the numbers:</strong> literacy (age 15+) is 96.70% (2023 Susenas), life expectancy is 74.15 years, and the poverty line is Rp595,242 per capita per month. Unemployment (open rate, August 2024) is 4.91% — down from 7.07% at the pandemic peak in 2020.</div>
+
+  <div class="grid-2">
+    <section class="chart-card">
+      <div class="chart-head"><h3>Human Development Index <span class="unit">2015–2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-hdi"></div>
+      <p class="chart-note">HDI rose from 69.55 in 2015 to 75.02 in 2024 — Indonesia is now in the UN's “high human development” group.</p>
+    </section>
+    <section class="chart-card">
+      <div class="chart-head"><h3>Gini ratio <span class="unit">2015–2024 (lower = more equal)</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-gini"></div>
+      <p class="chart-note">Inequality fell from 0.408 in 2015 to 0.379 in March 2024 and has been flat since 2022.</p>
+    </section>
+  </div>
+
+  <section class="chart-card">
+    <div class="chart-head"><h3>Poverty rate <span class="unit">% of population, September each year, 2015–2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+    <div class="chart-holder" id="ch-poverty"></div>
+    <p class="chart-note">Poverty fell from about 11.1% in 2015 to 8.57% in September 2024 — 24.06 million people. The poverty line is Rp595,242 per capita per month.</p>
+  </section>
+
+  <div class="tabs" data-tabgroup="hdi" role="tablist">
+    <button type="button" role="tab" data-tab="top" class="active" aria-selected="true">10 highest HDI provinces</button>
+    <button type="button" role="tab" data-tab="bottom" aria-selected="false">10 lowest HDI provinces</button>
+  </div>
+  <div data-tabpanel="hdi" data-panel="top">
+    <section class="chart-card">
+      <div class="chart-head"><h3>Highest HDI by province <span class="unit">2024 (≈)</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-hdi-top"></div>
+      <p class="chart-note">Jakarta (84.15) leads; Yogyakarta (81.62) and East Kalimantan (80.34) are the only others above 80.</p>
+    </section>
+  </div>
+  <div data-tabpanel="hdi" data-panel="bottom" hidden>
+    <section class="chart-card">
+      <div class="chart-head"><h3>Lowest HDI by province <span class="unit">2024 (≈)</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
+      <div class="chart-holder" id="ch-hdi-bottom"></div>
+      <p class="chart-note">The gap is stark: Central Papua (61.94) is more than 22 points below Jakarta — the development frontier is the eastern highlands.</p>
+    </section>
+  </div>
+
+  <p class="src">Source: BPS, 2015–2024 (HDI, Gini, poverty, life expectancy). Provincial HDI rounded (~).</p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <h3>Site map</h3>
+    <nav class="sitemap" aria-label="Site map">
+      <a href="index.html">Dashboard</a><a href="economy.html">Economy — GDP &amp; Growth</a>
+      <a href="trade.html">Foreign Trade</a><a href="population.html">Population &amp; Demography</a>
+      <a href="regions.html">Regional Economy &amp; Wages</a><a href="prices-money.html">Prices &amp; Money</a>
+      <a href="social.html">Welfare &amp; Inequality</a><a href="about.html">About &amp; Data Dictionary</a>
+    </nav>
+    <p class="fineprint">Indonesia in Numbers — a static snapshot. Data: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower, World Bank, IMF, CIA World Factbook. Vintage 2024 (minimum wage 2025). No network requests: all charts are inline SVG, all data is in the site's own files.</p>
+  </div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/charts.js"></script>
+<script>
+/* Social page script: HDI, Gini and poverty lines, the top/bottom
+   provincial HDI tabs, and the year-filtered welfare tiles. */
+(function () {
+  var D = window.DATA;
+  function find(series, y) {
+    for (var i = 0; i < series.length; i++) if (series[i].year === y) return series[i].value;
+    return null;
+  }
+  window.renderYear = function (y) {
+    var hdi = find(D.hdi, y), gini = find(D.gini, y), pov = find(D.poverty, y);
+    var el;
+    el = document.getElementById("kpi-hdi"); if (el && hdi !== null) el.textContent = hdi.toFixed(2);
+    el = document.getElementById("kpi-hdi-sub"); if (el) el.textContent = y + " · BPS";
+    el = document.getElementById("kpi-gini"); if (el && gini !== null) el.textContent = gini.toFixed(3);
+    el = document.getElementById("kpi-gini-sub"); if (el) el.textContent = y + " · BPS";
+    el = document.getElementById("kpi-pov"); if (el && pov !== null) el.textContent = pov.toFixed(2) + "%";
+    el = document.getElementById("kpi-pov-sub"); if (el) el.textContent = "Sep " + y + " · BPS";
+  };
+  window.Charts.render(document.getElementById("ch-hdi"), {
+    type: "line", title: "Human Development Index 2015–2024", valueFmt: "num2", endLabel: true,
+    labels: D.hdi.map(function (d) { return String(d.year); }),
+    series: [{ name: "HDI", color: "#0e6b6b", values: D.hdi.map(function (d) { return d.value; }) }],
+    source: "BPS, 2015–2024"
+  });
+  window.Charts.render(document.getElementById("ch-gini"), {
+    type: "line", title: "Gini ratio 2015–2024", valueFmt: "num3", endLabel: true,
+    labels: D.gini.map(function (d) { return String(d.year); }),
+    series: [{ name: "Gini", color: "#6a4c93", values: D.gini.map(function (d) { return d.value; }) }],
+    source: "BPS, 2015–2024"
+  });
+  window.Charts.render(document.getElementById("ch-poverty"), {
+    type: "line", title: "Poverty rate 2015–2024", valueFmt: "pct2", endLabel: true,
+    labels: D.poverty.map(function (d) { return String(d.year); }),
+    series: [{ name: "Poverty %", color: "#b3392e", values: D.poverty.map(function (d) { return d.value; }) }],
+    source: "BPS, September each year, 2015–2024"
+  });
+  window.Charts.render(document.getElementById("ch-hdi-top"), {
+    type: "hbar", title: "Highest HDI by province 2024", valueFmt: "num2",
+    data: D.hdiTop.map(function (p) { return { name: p.name, value: p.value }; }),
+    source: "BPS, 2024 (≈)"
+  });
+  window.Charts.render(document.getElementById("ch-hdi-bottom"), {
+    type: "hbar", title: "Lowest HDI by province 2024", valueFmt: "num2",
+    data: D.hdiBottom.map(function (p) { return { name: p.name, value: p.value }; }),
+    source: "BPS, 2024 (≈)"
+  });
+})();
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>
