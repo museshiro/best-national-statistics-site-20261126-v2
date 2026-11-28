@@ -1,134 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Regional Economy &amp; Wages · Indonesia in Numbers</title>
-<meta name="description" content="Indonesia's regions: GRDP by province, GRDP per capita, the 2025 provincial minimum wage (UMP) and how population relates to output.">
+<title>Regional Economy &amp; Wages — Indonesia in Numbers</title>
+<meta name="description" content="Provincial GRDP, GRDP per capita and minimum wages (UMP 2025) across Indonesia's 38 provinces. Sources: BPS, Permenaker No. 16/2024.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="regions">
-<header class="masthead">
-  <div class="wrap">
-    <a class="brand" href="index.html">Indonesia <span>in Numbers</span></a>
-    <p class="tagline">National Statistics Explorer · Data vintage 2024 · Sources: BPS, Bank Indonesia, World Bank</p>
-    <button class="theme-btn" id="theme-toggle" type="button">◐ Dark</button>
-  </div>
-  <nav class="site-nav" aria-label="Sections">
-    <div class="wrap">
-      <a href="index.html" data-nav="index">Dashboard</a>
-      <a href="economy.html" data-nav="economy">Economy</a>
-      <a href="trade.html" data-nav="trade">Trade</a>
-      <a href="population.html" data-nav="population">Population</a>
-      <a href="regions.html" data-nav="regions">Regions</a>
-      <a href="prices-money.html" data-nav="prices-money">Prices &amp; Money</a>
-      <a href="social.html" data-nav="social">Social</a>
-      <a href="about.html" data-nav="about">About &amp; Data</a>
-    </div>
-  </nav>
-</header>
-<main class="wrap">
-  <p class="crumbs"><a href="index.html">Dashboard</a> / Regions</p>
-  <h1>Regional Economy &amp; Wages</h1>
-  <p class="lede">Jakarta's economy (Rp3,680 T) is larger than the next two provinces combined — but per person, resource-rich East Kalimantan is second only to the capital. The 2025 minimum wage ranges from Rp2,169,349 in Central Java to Rp5,396,761 in Jakarta.</p>
-
-  <section class="kpi-strip" aria-label="Key indicators">
-    <div class="kpi"><div class="kpi-label">Largest GRDP: Jakarta</div><div class="kpi-value">Rp3,680 T</div><div class="kpi-sub">≈ 16.6% of national GDP · 2024</div></div>
-    <div class="kpi"><div class="kpi-label">Highest GRDP per capita</div><div class="kpi-value">Rp344.35 mn</div><div class="kpi-sub">Jakarta · 2024</div></div>
-    <div class="kpi"><div class="kpi-label">Highest UMP 2025</div><div class="kpi-value">Rp5,396,761</div><div class="kpi-sub">Jakarta · per month</div></div>
-    <div class="kpi"><div class="kpi-label">Lowest UMP 2025 (verified)</div><div class="kpi-value">Rp2,169,349</div><div class="kpi-sub">Central Java · per month</div></div>
-  </section>
-
-  <div class="grid-2">
-    <section class="chart-card">
-      <div class="chart-head"><h3>GRDP by province <span class="unit">Rp trillion, nominal, 2024 (≈)</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-      <div class="chart-holder" id="ch-pdrb"></div>
-      <p class="chart-note">The top 10 provinces produce about 80% of national GDP. <a href="economy.html">National GDP →</a></p>
-    </section>
-    <section class="chart-card">
-      <div class="chart-head"><h3>GRDP per capita <span class="unit">Rp million per person, 2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-      <div class="chart-holder" id="ch-pdrb-pc"></div>
-      <p class="chart-note">Jakarta (Rp344.35 mn), Banten (Rp70.28 mn) and Yogyakarta (Rp51.47 mn) are exact BPS figures; the rest are derived from rounded GRDP and population (~).</p>
-    </section>
-  </div>
-
-  <section class="chart-card">
-    <div class="chart-head"><h3>Provincial minimum wage (UMP) 2025 <span class="unit">Rp per month — 13 verified provinces</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-    <div class="chart-holder" id="ch-ump"></div>
-    <p class="chart-note">Median of the verified provinces: <strong>Rp2,996,560</strong> (Bali). The national average rose 6.5% under Permenaker No. 16/2024. The official 2025 list covers 37 provinces; Highland Papua is unverified and not shown.</p>
-  </section>
-
-  <section class="chart-card">
-    <div class="chart-head"><h3>People vs output <span class="unit">population (mn) vs GRDP (Rp T), 2024 — bubble size = GRDP per capita</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-    <div class="chart-holder" id="ch-scatter"></div>
-    <p class="chart-note">West Java has the most people but only the second-largest economy; East Kalimantan sits far above the line — few people, very high output per person. Bubble size is proportional to GRDP per capita (Rp million).</p>
-  </section>
-
-  <h2>Minimum wage 2025 in detail</h2>
-  <div class="toolbar">
-    <label for="ump-search">Search provinces:</label>
-    <input type="search" id="ump-search" data-search="#ump-table" data-count="#ump-count" placeholder="e.g. Java, Bali">
-    <span class="count" id="ump-count">showing 13 of 13</span>
-  </div>
-  <div class="table-wrap">
-    <table class="data-table" id="ump-table" data-sortable>
-      <thead><tr><th data-sort>Province</th><th data-sort data-num>UMP 2025 (Rp/month)</th><th data-sort data-num>vs median (Rp2,996,560)</th></tr></thead>
-      <tbody id="ump-tbody"></tbody>
-    </table>
-  </div>
-  <p class="src">Source: Ministry of Manpower (Permenaker No. 16/2024); BPS GRDP 2024. Only verified UMP figures are shown.</p>
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <h3>Site map</h3>
-    <nav class="sitemap" aria-label="Site map">
-      <a href="index.html">Dashboard</a><a href="economy.html">Economy — GDP &amp; Growth</a>
-      <a href="trade.html">Foreign Trade</a><a href="population.html">Population &amp; Demography</a>
-      <a href="regions.html">Regional Economy &amp; Wages</a><a href="prices-money.html">Prices &amp; Money</a>
-      <a href="social.html">Welfare &amp; Inequality</a><a href="about.html">About &amp; Data Dictionary</a>
-    </nav>
-    <p class="fineprint">Indonesia in Numbers — a static snapshot. Data: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower, World Bank, IMF, CIA World Factbook. Vintage 2024 (minimum wage 2025). No network requests: all charts are inline SVG, all data is in the site's own files.</p>
-  </div>
-</footer>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+<a class="brand" href="index.html"><b>Indonesia</b> in Numbers</a>
+<nav class="main" aria-label="Main">
+<a href="index.html">Dashboard</a><a href="economy.html">Economy</a><a href="trade.html">Trade</a><a href="population.html">Population</a><a href="regions.html" class="active">Regions</a><a href="prices-money.html">Prices &amp; Money</a><a href="social.html">Social</a><a href="peers.html">Peers</a><a href="about.html">About</a><a href="indicators.html" class="cta">Indicator Index</a>
+</nav>
+<button class="theme-btn" id="themeBtn" type="button">◐ Dark</button>
+</div></header>
+<main id="main"><div class="wrap">
+<p class="crumb"><a href="index.html">Dashboard</a> / Regions</p>
+<h1>Regional Economy &amp; Wages</h1>
+<p class="sub">Jakarta's economy (≈Rp3,680 trillion) is larger than the next two provinces combined — West Java ≈Rp2,800T and East Java ≈Rp2,700T. Minimum wages rose <b>6.5% on average</b> for 2025 (Permenaker No. 16/2024). Sources: BPS.</p>
+<div class="kpis" style="margin:12px 0 18px">
+<div class="kpi"><div class="lab">Largest GRDP</div><div class="val num">Rp3,680T</div><p class="src">Jakarta · 2024 ≈</p></div>
+<div class="kpi"><div class="lab">Highest GRDP/capita</div><div class="val num">Rp344.35M</div><p class="src">Jakarta · 2024</p></div>
+<div class="kpi"><div class="lab">Highest UMP</div><div class="val num">Rp5,396,761</div><p class="src">Jakarta · 2025</p></div>
+<div class="kpi"><div class="lab">Lowest UMP</div><div class="val num">Rp2,169,349</div><p class="src">Central Java · 2025</p></div>
+<div class="kpi"><div class="lab">Median UMP</div><div class="val num">≈Rp2.9–3.0M</div><p class="src">2025 · approx.</p></div>
+<div class="kpi"><div class="lab">Provinces</div><div class="val num">38</div><p class="src">2024 · BPS</p></div>
+</div>
+<div class="grid2">
+<div class="chartbox"><h3>Largest provincial economies (GRDP), 2024</h3><p class="anno">Jakarta ≈Rp3,680T — about 17% of national GDP (BPS).</p><div id="pdrbChart"></div><p class="src">Source: BPS, 2024 (≈ figures)</p></div>
+<div class="chartbox"><h3>GRDP per capita, 2024</h3><p class="anno">Jakarta's Rp344.35M per capita is nearly 5× Banten's Rp70.28M (BPS).</p><div id="pdrbCapChart"></div><p class="src">Source: BPS, 2024</p></div>
+</div>
+<div class="chartbox"><h3>Provincial minimum wage (UMP), 2025</h3><p class="anno">Jakarta Rp5,396,761 vs Central Java Rp2,169,349 — a 2.5× gap; the national median is ≈Rp2.9–3.0M (Permenaker No. 16/2024).</p><div id="umpChart"></div><p class="src">Source: Permenaker No. 16/2024</p></div>
+<div class="chartbox"><h3>Population vs GRDP</h3><p class="anno">West Java has the most people but Jakarta the biggest economy — the capital's output per person is far ahead (BPS).</p><div id="scatterChart"></div><p class="src">Source: BPS, 2024</p></div>
+<h2>Provincial minimum wage (UMP), 2025</h2>
+<div class="tblwrap"><table class="sortable"><thead><tr><th>Province</th><th class="num">UMP 2025 (Rp/month)</th></tr></thead><tbody>
+<tr><td>Jakarta</td><td class="num">5,396,761</td></tr>
+<tr><td>Aceh</td><td class="num">3,685,616</td></tr>
+<tr><td>South Sumatra</td><td class="num">3,681,571</td></tr>
+<tr><td>South Sulawesi</td><td class="num">3,657,527</td></tr>
+<tr><td>East Kalimantan</td><td class="num">3,579,314</td></tr>
+<tr><td>Riau</td><td class="num">3,508,776</td></tr>
+<tr><td>Bali</td><td class="num">2,996,560</td></tr>
+<tr><td>North Sumatra</td><td class="num">2,992,559</td></tr>
+<tr><td>Banten</td><td class="num">2,905,119</td></tr>
+<tr><td>North Maluku</td><td class="num">2,602,931</td></tr>
+<tr><td>East Java</td><td class="num">2,305,985</td></tr>
+<tr><td>West Java</td><td class="num">2,191,232</td></tr>
+<tr><td>Central Java</td><td class="num">2,169,349</td></tr>
+</tbody></table></div>
+<p class="src">Source: Permenaker No. 16/2024. Only verified provinces are listed; the official 2025 list covers 37 provinces. Click any column header to sort.</p>
+</div></main>
+<footer class="site"><div class="wrap">
+<nav aria-label="Site map"><a href="index.html">Dashboard</a><a href="economy.html">Economy</a><a href="trade.html">Trade</a><a href="population.html">Population</a><a href="regions.html">Regions</a><a href="prices-money.html">Prices &amp; Money</a><a href="social.html">Social</a><a href="indicators.html">Indicator Index</a><a href="peers.html">Peers</a><a href="about.html">About</a></nav>
+<p class="small muted">Sources: BPS, Bank Indonesia, World Bank, IMF. Static snapshot — no network requests. <a href="about.html">About &amp; data dictionary</a>.</p>
+</div></footer>
 <script src="js/data.js"></script>
 <script src="js/charts.js"></script>
-<script>
-/* Regions page script: GRDP bars, GRDP-per-capita bars, UMP bars and
-   the population-vs-GRDP scatter, plus the UMP table. */
-(function () {
-  var D = window.DATA;
-  window.Charts.render(document.getElementById("ch-pdrb"), {
-    type: "hbar", title: "GRDP by province 2024", valueFmt: "int",
-    data: D.pdrb.map(function (p) { return { name: p.name, value: p.value }; }),
-    source: "BPS, 2024 (≈)"
-  });
-  window.Charts.render(document.getElementById("ch-pdrb-pc"), {
-    type: "hbar", title: "GRDP per capita 2024", valueFmt: "num1",
-    data: D.pdrbPc.map(function (p) { return { name: p.name + (p.exact ? "" : " ~"), value: p.value }; }),
-    source: "BPS, 2024 (exact where unmarked; ~ = derived)"
-  });
-  window.Charts.render(document.getElementById("ch-ump"), {
-    type: "hbar", title: "UMP 2025", valueFmt: "k",
-    data: D.ump.map(function (u) { return { name: u.name, value: u.value }; }),
-    source: "Ministry of Manpower, 2025"
-  });
-  var pcByName = {};
-  D.pdrbPc.forEach(function (p) { pcByName[p.name] = p.value; });
-  window.Charts.render(document.getElementById("ch-scatter"), {
-    type: "scatter", title: "Population vs GRDP 2024",
-    points: D.pdrb.map(function (p) {
-      return { name: p.name, x: p.pop, y: p.value, r: pcByName[p.name] || 0 };
-    }),
-    source: "BPS, 2024 (≈)"
-  });
-  var tbody = document.getElementById("ump-tbody");
-  tbody.innerHTML = D.ump.map(function (u) {
-    var diff = u.value - D.umpMedian;
-    var sign = diff >= 0 ? "+" : "−";
-    return "<tr><td>" + window.Charts.esc(u.name) + "</td><td data-value=\"" + u.value + "\">" + u.value.toLocaleString("en-US") + "</td><td data-value=\"" + diff + "\">" + sign + "Rp" + Math.abs(diff).toLocaleString("en-US") + "</td></tr>";
-  }).join("");
-})();
-</script>
 <script src="js/app.js"></script>
 </body>
 </html>
