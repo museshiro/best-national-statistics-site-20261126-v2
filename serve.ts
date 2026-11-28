@@ -1,10 +1,8 @@
-// A tiny static server for app/ (Node 22, standard library only), so the
-// site can be run locally without a build step: `node serve.ts` serves app/
-// on http://localhost:8080 (`--port <n>` for another port). It sends the MIME
-// types a browser needs, refuses any path outside app/, and otherwise does
-// nothing clever: a development convenience, not a web server for the
-// internet. The entry itself is plain static files and needs no server at
-// all to open in a browser.
+// A tiny static server for app/ (Node 22, standard library only), so the site
+// can be run locally without a build step: `node serve.ts` serves app/ on
+// http://localhost:8080 (`--port <n>` for another port). It sends the MIME types
+// a browser needs, refuses any path outside app/, and otherwise does nothing
+// clever: a development convenience, not a web server for the internet.
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
@@ -63,4 +61,3 @@ createServer((request, response) => {
 }).listen(port, '127.0.0.1', () => {
   console.log('app/ is on http://localhost:' + port);
 });
-// Indonesia in Numbers — serve with: node serve.ts
