@@ -1,160 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Population &amp; Demography · Indonesia in Numbers</title>
-<meta name="description" content="Indonesia's population: 237.6 million in 2010 to 281.6 million in 2024, the six largest provinces, and the split between Java and the rest.">
+<title>Population &amp; Demography — Indonesia in Numbers</title>
+<meta name="description" content="Indonesia population 2010–2024, provincial ranking and island shares. Source: BPS.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="population">
-<header class="masthead">
-  <div class="wrap">
-    <a class="brand" href="index.html">Indonesia <span>in Numbers</span></a>
-    <p class="tagline">National Statistics Explorer · Data vintage 2024 · Sources: BPS, Bank Indonesia, World Bank</p>
-    <button class="theme-btn" id="theme-toggle" type="button">◐ Dark</button>
-  </div>
-  <nav class="site-nav" aria-label="Sections">
-    <div class="wrap">
-      <a href="index.html" data-nav="index">Dashboard</a>
-      <a href="economy.html" data-nav="economy">Economy</a>
-      <a href="trade.html" data-nav="trade">Trade</a>
-      <a href="population.html" data-nav="population">Population</a>
-      <a href="regions.html" data-nav="regions">Regions</a>
-      <a href="prices-money.html" data-nav="prices-money">Prices &amp; Money</a>
-      <a href="social.html" data-nav="social">Social</a>
-      <a href="about.html" data-nav="about">About &amp; Data</a>
-    </div>
-  </nav>
-</header>
-<main class="wrap">
-  <p class="crumbs"><a href="index.html">Dashboard</a> / Population</p>
-  <h1>Population &amp; Demography</h1>
-  <p class="lede">281.6 million people in 2024 — up from 237.6 million in the 2010 census. More than half live on Java, an island smaller than the UK; the other 44% are spread across 17,500+ islands.</p>
-
-  <section class="kpi-strip" aria-label="Key indicators">
-    <div class="kpi"><div class="kpi-label">Population 2024</div><div class="kpi-value">281.6 mn</div><div class="kpi-sub">BPS · 2024</div></div>
-    <div class="kpi"><div class="kpi-label">Population 2010 (census)</div><div class="kpi-value">237.6 mn</div><div class="kpi-sub">+44.0 mn in 14 years</div></div>
-    <div class="kpi"><div class="kpi-label">Largest province</div><div class="kpi-value">West Java</div><div class="kpi-sub">50.345 mn · 2024</div></div>
-    <div class="kpi"><div class="kpi-label">Working age (15–64)</div><div class="kpi-value">~68.2%</div><div class="kpi-sub">Demographic bonus · 2024</div></div>
-  </section>
-
-  <div class="grid-2">
-    <section class="chart-card">
-      <div class="chart-head"><h3>Population growth <span class="unit">million people, 2010–2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-      <div class="chart-holder" id="ch-pop-line"></div>
-      <p class="chart-note">2010 is the census figure; 2015–2024 are BPS annual estimates.</p>
-    </section>
-    <section class="chart-card">
-      <div class="chart-head"><h3>Most populous provinces <span class="unit">million people, 2024</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-      <div class="chart-holder" id="ch-pop-prov"></div>
-      <p class="chart-note">The six largest provinces hold 168.6 million people — 60% of the country.</p>
-    </section>
-  </div>
-
-  <div class="tabs" data-tabgroup="island" role="tablist">
-    <button type="button" role="tab" data-tab="all" class="active" aria-selected="true">All island groups</button>
-    <button type="button" role="tab" data-tab="java" aria-selected="false">Java vs the rest</button>
-  </div>
-  <div data-tabpanel="island" data-panel="all">
-    <section class="chart-card">
-      <div class="chart-head"><h3>Where Indonesians live <span class="unit">share of population by island group, 2024 (≈)</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-      <div class="chart-holder" id="ch-islands"></div>
-      <p class="chart-note">Shares are approximate (BPS 2024). Java holds 55.9% of people on about 7% of the land.</p>
-    </section>
-  </div>
-  <div data-tabpanel="island" data-panel="java" hidden>
-    <section class="chart-card">
-      <div class="chart-head"><h3>Java vs the rest <span class="unit">share of population, 2024 (≈)</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-      <div class="chart-holder" id="ch-java"></div>
-      <p class="chart-note">Java's 55.9% share has been slowly falling as the outer islands grow faster.</p>
-    </section>
-  </div>
-
-  <section class="chart-card">
-    <div class="chart-head"><h3>Annual population growth <span class="unit">% per year, 2016–2024 (derived from BPS series)</span></h3><button class="toggle-btn" type="button" data-toggle-table>Table</button></div>
-    <div class="chart-holder" id="ch-pop-growth"></div>
-    <p class="chart-note">Growth has eased from about 1.0% a year to about 0.9% — still roughly 2.9 million more people every year.</p>
-  </section>
-
-  <div class="fact-band"><strong>Age structure (2024, ≈):</strong> 0–14 years 24.9% · 15–64 years 68.2% · 65+ years 6.9%. Literacy (age 15+) is 96.70% (2023 Susenas) and life expectancy is 74.15 years.</div>
-
-  <h2>Provinces by population</h2>
-  <div class="toolbar">
-    <label for="pop-search">Search provinces:</label>
-    <input type="search" id="pop-search" data-search="#pop-table" data-count="#pop-count" placeholder="e.g. Java, Banten">
-    <span class="count" id="pop-count">showing 6 of 6</span>
-  </div>
-  <div class="table-wrap">
-    <table class="data-table" id="pop-table" data-sortable>
-      <thead><tr><th data-sort>Province</th><th data-sort data-num>Population 2024 (mn)</th><th data-sort data-num>Share of Indonesia (%)</th></tr></thead>
-      <tbody id="pop-tbody"></tbody>
-    </table>
-  </div>
-  <p class="src">Source: BPS, 2024. The six largest provinces are shown with verified figures; the full 38-province list is on the <a href="about.html">About page</a>.</p>
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <h3>Site map</h3>
-    <nav class="sitemap" aria-label="Site map">
-      <a href="index.html">Dashboard</a><a href="economy.html">Economy — GDP &amp; Growth</a>
-      <a href="trade.html">Foreign Trade</a><a href="population.html">Population &amp; Demography</a>
-      <a href="regions.html">Regional Economy &amp; Wages</a><a href="prices-money.html">Prices &amp; Money</a>
-      <a href="social.html">Welfare &amp; Inequality</a><a href="about.html">About &amp; Data Dictionary</a>
-    </nav>
-    <p class="fineprint">Indonesia in Numbers — a static snapshot. Data: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower, World Bank, IMF, CIA World Factbook. Vintage 2024 (minimum wage 2025). No network requests: all charts are inline SVG, all data is in the site's own files.</p>
-  </div>
-</footer>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+<a class="brand" href="index.html"><b>Indonesia</b> in Numbers</a>
+<nav class="main" aria-label="Main">
+<a href="index.html">Dashboard</a><a href="economy.html">Economy</a><a href="trade.html">Trade</a><a href="population.html" class="active">Population</a><a href="regions.html">Regions</a><a href="prices-money.html">Prices &amp; Money</a><a href="social.html">Social</a><a href="peers.html">Peers</a><a href="about.html">About</a><a href="indicators.html" class="cta">Indicator Index</a>
+</nav>
+<button class="theme-btn" id="themeBtn" type="button">◐ Dark</button>
+</div></header>
+<main id="main"><div class="wrap">
+<p class="crumb"><a href="index.html">Dashboard</a> / Population</p>
+<h1>Population &amp; Demography</h1>
+<p class="sub"><b>281.6 million</b> people in 2024 — up from <b>237.6 million</b> at the 2010 census — the world's 4th most populous country. Source: BPS.</p>
+<div class="kpis" style="margin:12px 0 18px">
+<div class="kpi"><div class="lab">Population 2024</div><div class="val num">281.6M</div><p class="src">2024 · BPS</p></div>
+<div class="kpi"><div class="lab">Population 2010</div><div class="val num">237.6M</div><p class="src">Census 2010 · BPS</p></div>
+<div class="kpi"><div class="lab">Growth 2010–24</div><div class="val num">+18.5%</div><p class="src">Derived</p></div>
+<div class="kpi"><div class="lab">Largest province</div><div class="val num">W. Java</div><p class="src">50.345M · 2024</p></div>
+<div class="kpi"><div class="lab">Java share</div><div class="val num">≈56%</div><p class="src">Approx. · BPS</p></div>
+<div class="kpi"><div class="lab">Life expectancy</div><div class="val num">74.15 yrs</div><p class="src">2024 · BPS</p></div>
+</div>
+<div class="chartbox"><h3>Population, 2015–2024</h3><p class="anno">From 258.7M in 2015 to 281.6M in 2024 — about 2.3 million more people every year (BPS).</p><div id="popChart"></div><p class="src">Source: BPS, 2024</p></div>
+<div class="grid2">
+<div class="chartbox"><h3>Most populous provinces, 2024</h3><p class="anno">The three Java provinces at the top hold 130.1 million people between them (BPS).</p><div id="provChart15"></div><p class="src">Source: BPS, 2024</p></div>
+<div class="chartbox"><h3>Population by island group</h3><p class="anno">Java holds ≈56% of Indonesians on ≈7% of the land (approx. shares, BPS).</p><div id="islandChart"></div><p class="src">Source: BPS, 2024 (approx.)</p></div>
+</div>
+<h2>Provincial population, 2024</h2>
+<p><input type="search" id="provSearch" placeholder="Search provinces…" aria-label="Search provinces"> <span class="countline" id="provCount"></span></p>
+<div class="tblwrap"><table class="sortable" id="provTable"><thead><tr><th>Province</th><th class="num">Population (M)</th></tr></thead><tbody>
+<tr><td>West Java</td><td class="num">50.345</td></tr>
+<tr><td>East Java</td><td class="num">41.815</td></tr>
+<tr><td>Central Java</td><td class="num">37.892</td></tr>
+<tr><td>North Sumatra</td><td class="num">15.4</td></tr>
+<tr><td>Banten</td><td class="num">12.431</td></tr>
+<tr><td>Jakarta</td><td class="num">10.685</td></tr>
+<tr><td>South Sulawesi</td><td class="num">≈9.5</td></tr>
+<tr><td>Lampung</td><td class="num">≈9.4</td></tr>
+<tr><td>South Sumatra</td><td class="num">≈8.8</td></tr>
+<tr><td>Riau</td><td class="num">≈6.9</td></tr>
+<tr><td>West Sumatra</td><td class="num">≈6.0</td></tr>
+<tr><td>Aceh</td><td class="num">≈5.5</td></tr>
+<tr><td>Bali</td><td class="num">≈4.4</td></tr>
+<tr><td>East Kalimantan</td><td class="num">≈3.9</td></tr>
+<tr><td>Yogyakarta</td><td class="num">≈3.8</td></tr>
+</tbody></table></div>
+<p class="src">Source: BPS, 2024. Figures marked ≈ are rounded. Click any column header to sort.</p>
+</div></main>
+<footer class="site"><div class="wrap">
+<nav aria-label="Site map"><a href="index.html">Dashboard</a><a href="economy.html">Economy</a><a href="trade.html">Trade</a><a href="population.html">Population</a><a href="regions.html">Regions</a><a href="prices-money.html">Prices &amp; Money</a><a href="social.html">Social</a><a href="indicators.html">Indicator Index</a><a href="peers.html">Peers</a><a href="about.html">About</a></nav>
+<p class="small muted">Sources: BPS, Bank Indonesia, World Bank, IMF. Static snapshot — no network requests. <a href="about.html">About &amp; data dictionary</a>.</p>
+</div></footer>
 <script src="js/data.js"></script>
 <script src="js/charts.js"></script>
-<script>
-/* Population page script: four charts (line, bars, tabbed donuts,
-   derived growth columns) and the province table. */
-(function () {
-  var D = window.DATA;
-  var labels = ["2010"].concat(D.years.map(String));
-  var values = [D.facts.census2010].concat(D.years.map(function (y) { return D.byYear[y].pop; }));
-  window.Charts.render(document.getElementById("ch-pop-line"), {
-    type: "line", title: "Population 2010–2024", valueFmt: "num1", endLabel: true,
-    labels: labels,
-    series: [{ name: "Population (mn)", color: "#0e6b6b", values: values }],
-    source: "BPS census 2010; BPS annual estimates 2015–2024"
-  });
-  window.Charts.render(document.getElementById("ch-pop-prov"), {
-    type: "hbar", title: "Most populous provinces 2024", valueFmt: "num1",
-    data: D.provincesPop.map(function (p) { return { name: p.name, value: p.pop }; }),
-    source: "BPS, 2024"
-  });
-  window.Charts.render(document.getElementById("ch-islands"), {
-    type: "donut", title: "Population by island group 2024", valueFmt: "pct1", center: "55.9%", centerSub: "on Java",
-    data: D.islands.map(function (d) { return { name: d.name, value: d.share }; }),
-    source: "BPS, 2024 (≈)"
-  });
-  window.Charts.render(document.getElementById("ch-java"), {
-    type: "donut", title: "Java vs the rest 2024", valueFmt: "pct1", center: "281.6", centerSub: "million people",
-    data: [{ name: "Java", value: 55.9 }, { name: "Outside Java", value: 44.1 }],
-    source: "BPS, 2024 (≈)"
-  });
-  var growth = [], glabels = [];
-  D.years.forEach(function (y, i) {
-    if (i === 0) return;
-    var prev = D.byYear[D.years[i - 1]].pop;
-    growth.push(+((D.byYear[y].pop / prev - 1) * 100).toFixed(2));
-    glabels.push(String(y));
-  });
-  window.Charts.render(document.getElementById("ch-pop-growth"), {
-    type: "columns", title: "Annual population growth 2016–2024", valueFmt: "pct2",
-    labels: glabels,
-    series: [{ name: "Growth %", color: "#1f4e79", values: growth }],
-    source: "Derived from BPS population series, 2015–2024"
-  });
-  var tbody = document.getElementById("pop-tbody");
-  tbody.innerHTML = D.provincesPop.map(function (p) {
-    var share = (p.pop / 281.6 * 100).toFixed(1);
-    return "<tr><td>" + window.Charts.esc(p.name) + "</td><td data-value=\"" + p.pop + "\">" + p.pop.toFixed(3) + "</td><td data-value=\"" + share + "\">" + share + "%</td></tr>";
-  }).join("");
-})();
-</script>
 <script src="js/app.js"></script>
 </body>
 </html>
