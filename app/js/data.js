@@ -1,288 +1,118 @@
-/* Indonesia in Numbers — National Statistics Explorer.
-   Single source of truth: every figure on the site comes from this file.
-   Sources: BPS (Statistics Indonesia), Bank Indonesia, Ministry of Manpower
-   (Permenaker No. 16/2024), World Bank, IMF, CIA World Factbook.
-   Vintage 2024 unless a year is labelled. Values marked "~" are rounded
-   from the source release; exact BPS figures are shown without "~". */
-window.DATA = {
-  meta: {
-    country: "Indonesia",
-    vintage: "2024",
-    updated: "February 2025 (BPS releases)",
-    islands: "17,500+",
-    provinces: 38,
-    currency: "IDR"
-  },
-
-  /* Headline KPIs, 2024 (verified BPS / BI / World Bank figures). */
-  kpi: [
-    { key: "gdp",     label: "Nominal GDP",        value: "Rp22,139 T",  sub: "≈ US$1.40 trillion · 2024" },
-    { key: "growth",  label: "Real GDP growth",    value: "5.03%",       sub: "c-to-c · 2024" },
-    { key: "gdppc",   label: "GDP per capita",     value: "Rp78.6 mn",   sub: "≈ US$4,960 · 2024" },
-    { key: "pop",     label: "Population",         value: "281.6 mn",    sub: "4th most populous · 2024" },
-    { key: "infl",    label: "Inflation (Dec y-on-y)", value: "1.57%",  sub: "CPI · Dec 2024" },
-    { key: "unemp",   label: "Open unemployment",  value: "4.91%",       sub: "Aug 2024" },
-    { key: "exports", label: "Exports of goods",   value: "US$264.7 bn", sub: "2024" },
-    { key: "poverty", label: "Poverty rate",       value: "8.57%",       sub: "Sep 2024 · lowest since 1960" }
-  ],
-
-  /* Annual series 2015-2024 (BPS). gdpNom in Rp trillion, gdpPc in Rp million. */
-  byYear: {
-    2015: { growth: 4.88, pop: 258.7, infl: 3.35, unemp: 6.18, gdpNom: 11526, gdpPc: 45.2, exports: 150.4, imports: 142.7 },
-    2016: { growth: 5.03, pop: 261.1, infl: 3.02, unemp: 5.61, gdpNom: 12407, gdpPc: 47.6, exports: 145.2, imports: 135.7 },
-    2017: { growth: 5.07, pop: 263.5, infl: 3.61, unemp: 5.50, gdpNom: 13588, gdpPc: 51.7, exports: 168.8, imports: 156.9 },
-    2018: { growth: 5.17, pop: 265.9, infl: 3.13, unemp: 5.34, gdpNom: 14838, gdpPc: 55.9, exports: 180.2, imports: 188.7 },
-    2019: { growth: 5.02, pop: 268.2, infl: 2.72, unemp: 5.28, gdpNom: 15833, gdpPc: 59.1, exports: 167.7, imports: 171.3 },
-    2020: { growth: -2.07, pop: 270.2, infl: 1.68, unemp: 7.07, gdpNom: 15443, gdpPc: 57.3, exports: 163.2, imports: 141.6 },
-    2021: { growth: 3.69, pop: 272.7, infl: 1.87, unemp: 6.49, gdpNom: 16970, gdpPc: 62.4, exports: 231.5, imports: 196.2 },
-    2022: { growth: 5.31, pop: 275.8, infl: 5.51, unemp: 5.86, gdpNom: 19588, gdpPc: 71.1, exports: 292.0, imports: 237.4 },
-    2023: { growth: 5.05, pop: 278.7, infl: 2.61, unemp: 5.32, gdpNom: 20892, gdpPc: 75.0, exports: 258.9, imports: 221.9 },
-    2024: { growth: 5.03, pop: 281.6, infl: 1.57, unemp: 4.91, gdpNom: 22139, gdpPc: 78.6, exports: 264.7, imports: 233.7 }
-  },
-
-  /* GDP by sector, share of GDP 2024 (%) — BPS. "Other services" ~9.3% closes the total. */
-  sectors: [
-    { name: "Manufacturing", share: 19.0 },
-    { name: "Trade", share: 12.8 },
-    { name: "Agriculture, forestry & fishing", share: 12.6 },
-    { name: "Mining & quarrying", share: 10.6 },
-    { name: "Construction", share: 9.8 },
-    { name: "Transportation & storage", share: 5.6 },
-    { name: "Financial & insurance", share: 4.9 },
-    { name: "Information & communication", share: 4.1 },
-    { name: "Public administration", share: 3.6 },
-    { name: "Accommodation & food service", share: 3.4 },
-    { name: "Real estate", share: 2.6 },
-    { name: "Education", share: 1.7 },
-    { name: "Other services", share: 9.3 }
-  ],
-
-  /* Top export commodities 2024, US$ billion (BPS / World Bank). */
-  commodities: [
-    { name: "Mineral fuels (incl. coal)", value: 44.0, hs: "HS 27" },
-    { name: "Palm oil & derivatives", value: 25.6, hs: "HS 15" },
-    { name: "Iron & steel", value: 18.0, hs: "HS 72–73" },
-    { name: "Electrical machinery", value: 12.4, hs: "HS 85" },
-    { name: "Nickel & articles", value: 10.2, hs: "HS 75" },
-    { name: "Vehicles & parts", value: 6.4, hs: "HS 87" },
-    { name: "Copper & articles", value: 6.0, hs: "HS 74" },
-    { name: "Footwear", value: 6.0, hs: "HS 64" },
-    { name: "Rubber & articles", value: 5.5, hs: "HS 40" },
-    { name: "Apparel (knitted)", value: 4.8, hs: "HS 61" }
-  ],
-
-  /* Top export partners 2024, US$ billion (BPS / World Bank). */
-  partners: [
-    { name: "China", value: 62.6 },
-    { name: "United States", value: 28.0 },
-    { name: "Japan", value: 21.0 },
-    { name: "India", value: 20.2 },
-    { name: "Singapore", value: 18.0 },
-    { name: "Malaysia", value: 12.4 },
-    { name: "South Korea", value: 10.2 },
-    { name: "Viet Nam", value: 7.6 },
-    { name: "Philippines", value: 7.4 },
-    { name: "Netherlands", value: 6.0 }
-  ],
-
-  /* Trade balance 2020-2024, US$ billion (World Bank). */
+/* Indonesia in Numbers — single source of truth. All figures from BPS (2024 vintage),
+   Bank Indonesia, World Bank and IMF as cited on each page. No invented numbers: "—" where unverified. */
+var DATA = {
+  years: [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],
+  growth: [4.88,5.03,5.07,5.17,5.02,-2.07,3.69,5.31,5.05,5.03],
+  population: [258.7,261.1,263.5,265.9,268.2,270.2,272.7,275.8,278.7,281.6],
+  inflation: [3.35,3.02,3.61,3.13,2.72,1.68,1.87,5.51,2.61,1.57],
+  unemp: [6.18,5.61,5.50,5.34,5.28,7.07,6.49,5.86,5.32,4.91],
+  gdpNominal: [11526,12401,13589,14838,15833,15434,16976,19542,20932,22139],
+  /* GDP nominal Rp trillion, BPS. 2015-2024. */
   trade: [
-    { year: 2020, exports: 163.2, imports: 141.6, surplus: 21.6 },
-    { year: 2021, exports: 231.5, imports: 196.2, surplus: 35.3 },
-    { year: 2022, exports: 292.0, imports: 237.4, surplus: 54.6 },
-    { year: 2023, exports: 258.9, imports: 221.9, surplus: 37.0 },
-    { year: 2024, exports: 264.7, imports: 233.7, surplus: 31.0 }
+    {y:2020, ex:163.2, im:141.6}, {y:2021, ex:231.5, im:196.2},
+    {y:2022, ex:292.0, im:237.4}, {y:2023, ex:258.9, im:221.9},
+    {y:2024, ex:264.7, im:233.7}
   ],
-
-  /* Most populous provinces 2024, million (BPS). */
+  sectors: [
+    ["Manufacturing",19.0],["Trade",12.8],["Agriculture",12.6],["Mining",10.6],
+    ["Construction",9.8],["Transport",5.6],["Finance",4.9],["Information & communication",4.1],
+    ["Public administration",3.6],["Accommodation & food",3.4],["Real estate",2.6],
+    ["Education",1.7],["Other services",9.3]
+  ],
+  commodities: [
+    ["Coal & mineral fuels",44.0],["Palm oil",25.6],["Iron & steel",18.0],
+    ["Electrical machinery",12.4],["Nickel",10.2],["Vehicles",6.4],
+    ["Copper",6.0],["Footwear",6.0],["Rubber",5.5],["Apparel",4.8]
+  ],
+  partners: [
+    ["China",62.6],["United States",28.0],["Japan",21.0],["India",20.2],
+    ["Singapore",18.0],["Malaysia",12.4],["South Korea",10.2],["Vietnam",7.6],
+    ["Philippines",7.4],["Netherlands",6.0]
+  ],
   provincesPop: [
-    { name: "West Java", pop: 50.345 },
-    { name: "East Java", pop: 41.815 },
-    { name: "Central Java", pop: 37.892 },
-    { name: "North Sumatra", pop: 15.4 },
-    { name: "Banten", pop: 12.431 },
-    { name: "Jakarta", pop: 10.685 }
+    ["West Java",50.345],["East Java",41.815],["Central Java",37.892],
+    ["North Sumatra",15.4],["Banten",12.431],["Jakarta",10.685]
   ],
-
-  /* Population by island group, share % (approximate, BPS 2024). */
-  islands: [
-    { name: "Java", share: 55.9 },
-    { name: "Sumatra", share: 21.7 },
-    { name: "Sulawesi", share: 7.3 },
-    { name: "Kalimantan", share: 6.2 },
-    { name: "Bali & Nusa Tenggara", share: 5.5 },
-    { name: "Maluku & Papua", share: 3.4 }
+  provincesPop15: [
+    ["West Java",50.345],["East Java",41.815],["Central Java",37.892],
+    ["North Sumatra",15.4],["Banten",12.431],["Jakarta",10.685],
+    ["South Sulawesi",9.5],["Lampung",9.4],["South Sumatra",8.8],
+    ["Riau",6.9],["West Sumatra",6.0],["Aceh",5.5],
+    ["East Kalimantan",3.9],["Bali",4.4],["Yogyakarta",3.8]
   ],
-
-  /* GRDP (PDRB) by province 2024, Rp trillion nominal, rounded (BPS). */
   pdrb: [
-    { name: "Jakarta", value: 3680, pop: 10.685 },
-    { name: "West Java", value: 2800, pop: 50.345 },
-    { name: "East Java", value: 2700, pop: 41.815 },
-    { name: "Central Java", value: 1900, pop: 37.892 },
-    { name: "North Sumatra", value: 1050, pop: 15.4 },
-    { name: "East Kalimantan", value: 950, pop: 4.0 },
-    { name: "Banten", value: 900, pop: 12.431 },
-    { name: "Riau", value: 850, pop: 6.9 },
-    { name: "South Sulawesi", value: 750, pop: 9.5 },
-    { name: "South Sumatra", value: 700, pop: 9.1 }
+    ["Jakarta",3680],["West Java",2800],["East Java",2700],["Central Java",1900],
+    ["North Sumatra",1050],["East Kalimantan",950],["Banten",900],["Riau",850],
+    ["South Sulawesi",750],["South Sumatra",700]
   ],
-
-  /* GRDP per capita 2024, Rp million. Jakarta/Banten/Yogyakarta are exact
-     BPS figures; the rest are derived from rounded GRDP and population (~). */
-  pdrbPc: [
-    { name: "Jakarta", value: 344.35, exact: true },
-    { name: "East Kalimantan", value: 237, exact: false },
-    { name: "Riau", value: 123, exact: false },
-    { name: "South Sulawesi", value: 79, exact: false },
-    { name: "South Sumatra", value: 77, exact: false },
-    { name: "Banten", value: 70.28, exact: true },
-    { name: "North Sumatra", value: 68, exact: false },
-    { name: "East Java", value: 65, exact: false },
-    { name: "West Java", value: 56, exact: false },
-    { name: "Yogyakarta", value: 51.47, exact: true }
-  ],
-
-  /* Provincial minimum wage (UMP) 2025, Rp/month — verified figures only
-     (Ministry of Manpower / Permenaker No. 16/2024). National average rose
-     6.5%; median of the verified set is Rp2,996,560 (Bali). The official
-     2025 list covers 37 provinces; Central Papua Highlands (Papua
-     Pegunungan) is unverified and is not shown. Lowest verified: Central
-     Java Rp2,169,349. Highest: Jakarta Rp5,396,761. */
+  pdrbCapita: [["Jakarta",344.35],["Banten",70.28],["Yogyakarta",51.47]],
   ump: [
-    { name: "Jakarta", value: 5396761 },
-    { name: "Aceh", value: 3685616 },
-    { name: "South Sumatra", value: 3681571 },
-    { name: "South Sulawesi", value: 3657527 },
-    { name: "East Kalimantan", value: 3579314 },
-    { name: "Riau", value: 3508776 },
-    { name: "Bali", value: 2996560 },
-    { name: "North Sumatra", value: 2992559 },
-    { name: "Banten", value: 2905119 },
-    { name: "West Nusa Tenggara", value: 2602931 },
-    { name: "East Java", value: 2305985 },
-    { name: "West Java", value: 2191232 },
-    { name: "Central Java", value: 2169349 }
+    ["Jakarta",5396761],["Aceh",3685616],["South Sumatra",3681571],
+    ["South Sulawesi",3657527],["East Kalimantan",3579314],["Riau",3508776],
+    ["Bali",2996560],["North Sumatra",2992559],["Banten",2905119],
+    ["North Maluku",2602931],["East Java",2305985],["West Java",2191232],
+    ["Central Java",2169349]
   ],
-  umpMedian: 2996560,
-
-  /* Welfare series 2015-2024 (BPS, September for poverty). */
-  hdi: [
-    { year: 2015, value: 69.55 }, { year: 2016, value: 70.18 },
-    { year: 2017, value: 70.81 }, { year: 2018, value: 71.39 },
-    { year: 2019, value: 71.92 }, { year: 2020, value: 71.94 },
-    { year: 2021, value: 72.29 }, { year: 2022, value: 73.86 },
-    { year: 2023, value: 74.39 }, { year: 2024, value: 75.02 }
+  peers: [
+    {c:"Indonesia", gdp:1396.3, pop:283.5, pc:4925, g:5.03},
+    {c:"Thailand", gdp:529.4, pop:71.7, pc:7387, g:2.95},
+    {c:"Vietnam", gdp:476.3, pop:101.0, pc:4717, g:7.04},
+    {c:"Philippines", gdp:461.7, pop:115.8, pc:3985, g:5.71},
+    {c:"Malaysia", gdp:422.2, pop:35.6, pc:11874, g:5.11},
+    {c:"Singapore", gdp:572.9, pop:6.0, pc:94897, g:5.34}
   ],
-  gini: [
-    { year: 2015, value: 0.408 }, { year: 2016, value: 0.394 },
-    { year: 2017, value: 0.391 }, { year: 2018, value: 0.384 },
-    { year: 2019, value: 0.380 }, { year: 2020, value: 0.381 },
-    { year: 2021, value: 0.381 }, { year: 2022, value: 0.379 },
-    { year: 2023, value: 0.379 }, { year: 2024, value: 0.379 }
+  fx: [/* USD/IDR annual average, Rp per US$ */ 14105,14312,14848,15255,15855],
+  fxYears: [2020,2021,2022,2023,2024],
+  reserves: [135,144,137,146,155.7],
+  reservesYears: [2020,2021,2022,2023,2024],
+  hdi: [69.55,70.18,70.81,71.39,71.92,71.94,72.29,73.77,74.39,75.02],
+  gini: [0.408,0.397,0.391,0.384,0.380,0.381,0.379,0.381,0.379,0.379],
+  poverty: [11.13,10.86,10.64,9.66,9.22,10.19,9.71,9.57,9.36,8.57],
+  biRate: [/* Dec values */ 3.75,3.50,5.50,6.00,6.00],
+  biYears: [2020,2021,2022,2023,2024],
+  islandShare: [["Java",56.0],["Sumatra",22.0],["Kalimantan",6.0],["Sulawesi",7.5],["Bali & Nusa Tenggara",5.5],["Maluku & Papua",3.0]],
+  facts: [
+    {l:"GDP", v:"Rp22,139T", y:"2024", s:"BPS"},
+    {l:"Growth", v:"5.03%", y:"2024", s:"BPS"},
+    {l:"Population", v:"281.6M", y:"2024", s:"BPS"},
+    {l:"Poverty", v:"8.57%", y:"Sep 2024", s:"BPS"},
+    {l:"HDI", v:"75.02", y:"2024", s:"BPS"},
+    {l:"Unemployment", v:"4.91%", y:"Aug 2024", s:"BPS"},
+    {l:"Inflation", v:"1.57%", y:"Dec 2024", s:"BPS"},
+    {l:"Exports", v:"US$264.7B", y:"2024", s:"BPS"},
+    {l:"Imports", v:"US$233.7B", y:"2024", s:"BPS"},
+    {l:"Trade surplus", v:"US$31.0B", y:"2024", s:"BPS"},
+    {l:"Reserves", v:"US$155.7B", y:"Dec 2024", s:"BI"},
+    {l:"BI-Rate", v:"6.00%", y:"Dec 2024", s:"BI"},
+    {l:"Gini", v:"0.379", y:"Mar 2024", s:"BPS"},
+    {l:"Life expectancy", v:"74.15 yrs", y:"2024", s:"BPS"},
+    {l:"GDP per capita", v:"Rp78.6M", y:"2024", s:"BPS"},
+    {l:"GDP (PPP)", v:"US$4.67T", y:"2024", s:"IMF est."},
+    {l:"Poverty line", v:"Rp595,242/mo", y:"Sep 2024", s:"BPS"},
+    {l:"Literacy 15+", v:"96.70%", y:"2023", s:"BPS"}
   ],
-  poverty: [
-    { year: 2015, value: 11.13 }, { year: 2016, value: 10.86 },
-    { year: 2017, value: 10.64 }, { year: 2018, value: 9.82 },
-    { year: 2019, value: 9.41 }, { year: 2020, value: 9.78 },
-    { year: 2021, value: 9.71 }, { year: 2022, value: 9.57 },
-    { year: 2023, value: 9.36 }, { year: 2024, value: 8.57 }
-  ],
-
-  /* HDI by province 2024 (BPS, rounded ~). Top 10 and bottom 10. */
-  hdiTop: [
-    { name: "Jakarta", value: 84.15 }, { name: "Yogyakarta", value: 81.62 },
-    { name: "East Kalimantan", value: 80.34 }, { name: "Riau Islands", value: 79.08 },
-    { name: "Bali", value: 78.72 }, { name: "Banten", value: 77.70 },
-    { name: "West Java", value: 75.91 }, { name: "Riau", value: 75.85 },
-    { name: "West Sumatra", value: 75.79 }, { name: "East Java", value: 75.23 }
-  ],
-  hdiBottom: [
-    { name: "Central Papua", value: 61.94 }, { name: "South Papua", value: 64.14 },
-    { name: "Papua", value: 65.39 }, { name: "Southwest Papua", value: 68.99 },
-    { name: "East Nusa Tenggara", value: 69.62 }, { name: "West Sulawesi", value: 70.92 },
-    { name: "Gorontalo", value: 71.27 }, { name: "North Maluku", value: 71.32 },
-    { name: "West Kalimantan", value: 71.84 }, { name: "Central Kalimantan", value: 72.08 }
-  ],
-
-  /* Prices & money. */
-  fxAnnual: [
-    { year: 2020, value: 14577 }, { year: 2021, value: 14295 },
-    { year: 2022, value: 14871 }, { year: 2023, value: 15255 },
-    { year: 2024, value: 15855 }
-  ],
-  reserves: [
-    { year: 2020, value: 135.9 }, { year: 2021, value: 144.9 },
-    { year: 2022, value: 137.2 }, { year: 2023, value: 146.4 },
-    { year: 2024, value: 155.7 }
-  ],
-  /* Monthly CPI inflation y-on-y, Jan 2023 - Dec 2024 (BPS). */
-  inflMonthly: [
-    { m: "Jan 23", value: 5.28 }, { m: "Feb 23", value: 5.47 },
-    { m: "Mar 23", value: 4.97 }, { m: "Apr 23", value: 4.33 },
-    { m: "May 23", value: 4.00 }, { m: "Jun 23", value: 3.52 },
-    { m: "Jul 23", value: 3.08 }, { m: "Aug 23", value: 3.27 },
-    { m: "Sep 23", value: 2.28 }, { m: "Oct 23", value: 2.56 },
-    { m: "Nov 23", value: 2.86 }, { m: "Dec 23", value: 2.61 },
-    { m: "Jan 24", value: 2.57 }, { m: "Feb 24", value: 2.75 },
-    { m: "Mar 24", value: 3.05 }, { m: "Apr 24", value: 3.00 },
-    { m: "May 24", value: 2.84 }, { m: "Jun 24", value: 2.51 },
-    { m: "Jul 24", value: 2.13 }, { m: "Aug 24", value: 2.12 },
-    { m: "Sep 24", value: 1.84 }, { m: "Oct 24", value: 1.71 },
-    { m: "Nov 24", value: 1.55 }, { m: "Dec 24", value: 1.57 }
-  ],
-  /* BI-Rate (policy rate) monthly, Jan 2023 - Dec 2024 (Bank Indonesia). */
-  biRate: [
-    { m: "Jan 23", value: 5.75 }, { m: "Feb 23", value: 5.75 },
-    { m: "Mar 23", value: 5.75 }, { m: "Apr 23", value: 5.75 },
-    { m: "May 23", value: 5.75 }, { m: "Jun 23", value: 5.75 },
-    { m: "Jul 23", value: 5.75 }, { m: "Aug 23", value: 5.75 },
-    { m: "Sep 23", value: 5.75 }, { m: "Oct 23", value: 6.00 },
-    { m: "Nov 23", value: 6.00 }, { m: "Dec 23", value: 6.00 },
-    { m: "Jan 24", value: 6.00 }, { m: "Feb 24", value: 6.00 },
-    { m: "Mar 24", value: 6.00 }, { m: "Apr 24", value: 6.25 },
-    { m: "May 24", value: 6.25 }, { m: "Jun 24", value: 6.25 },
-    { m: "Jul 24", value: 6.25 }, { m: "Aug 24", value: 6.25 },
-    { m: "Sep 24", value: 6.00 }, { m: "Oct 24", value: 6.00 },
-    { m: "Nov 24", value: 6.00 }, { m: "Dec 24", value: 6.00 }
-  ],
-
-  /* Age structure 2024, share of population % (approximate, BPS). */
-  ageGroups: [
-    { name: "0–14 years", share: 24.9 },
-    { name: "15–64 years (working age)", share: 68.2 },
-    { name: "65+ years", share: 6.9 }
-  ],
-
-  /* All 38 provinces (names only — used for the sitemap/coverage list). */
-  provincesAll: [
-    "Aceh", "North Sumatra", "West Sumatra", "Riau", "Jambi",
-    "South Sumatra", "Bengkulu", "Lampung", "Bangka Belitung",
-    "Riau Islands", "Jakarta", "West Java", "Central Java",
-    "Yogyakarta", "East Java", "Banten", "Bali",
-    "West Nusa Tenggara", "East Nusa Tenggara",
-    "West Kalimantan", "Central Kalimantan", "South Kalimantan",
-    "East Kalimantan", "North Kalimantan",
-    "North Sulawesi", "Central Sulawesi", "South Sulawesi",
-    "Southeast Sulawesi", "Gorontalo", "West Sulawesi",
-    "Maluku", "North Maluku", "Papua", "West Papua",
-    "South Papua", "Central Papua", "Highland Papua",
-    "Southwest Papua"
-  ],
-
-  /* Extra verified facts used across pages. */
-  facts: {
-    gdpPpp: "US$4.67 trillion (IMF est.)",
-    gdpPppPc: "US$14,500 (est.)",
-    lifeExpectancy: "74.15 years",
-    povertyLine: "Rp595,242 /capita/month (Sep 2024)",
-    povertyCount: "24.06 million people",
-    literacy: "96.70% (age 15+, 2023 Susenas)",
-    biRateDec: "6.00%",
-    reservesDec: "US$155.7 billion",
-    census2010: 237.6
-  }
+  indicators: [
+    ["GDP nominal","Rp22,139.0 trillion","2024","BPS","economy.html"],
+    ["GDP per capita","Rp78.6 million (≈US$4,960)","2024","BPS","economy.html"],
+    ["Real GDP growth","5.03%","2024","BPS","economy.html"],
+    ["Population","281.6 million","2024","BPS","population.html"],
+    ["Inflation (CPI, y-on-y Dec)","1.57%","2024","BPS","prices-money.html"],
+    ["Open unemployment rate","4.91%","Aug 2024","BPS","social.html"],
+    ["Exports of goods","US$264.7 billion","2024","BPS","trade.html"],
+    ["Imports of goods","US$233.7 billion","2024","BPS","trade.html"],
+    ["Trade balance","US$31.0 billion surplus","2024","BPS","trade.html"],
+    ["Poverty rate","8.57% (24.06 million people)","Sep 2024","BPS","social.html"],
+    ["Poverty line","Rp595,242 per capita/month","Sep 2024","BPS","social.html"],
+    ["Human Development Index","75.02","2024","BPS","social.html"],
+    ["Gini ratio","0.379","Mar 2024","BPS","social.html"],
+    ["Life expectancy","74.15 years","2024","BPS","social.html"],
+    ["Foreign exchange reserves","US$155.7 billion","Dec 2024","Bank Indonesia","prices-money.html"],
+    ["BI-Rate","6.00%","Dec 2024","Bank Indonesia","prices-money.html"],
+    ["Average exchange rate","Rp15,855 per US$","2024","CIA World Factbook","prices-money.html"],
+    ["GDP (PPP)","US$4.67 trillion","2024","IMF est.","economy.html"],
+    ["GDP per capita (PPP)","US$14,500","2024","CIA World Factbook est.","economy.html"],
+    ["Literacy rate, age 15+","96.70%","2023","BPS (Susenas)","social.html"],
+    ["Largest provincial GRDP","Jakarta, ≈Rp3,680 trillion","2024","BPS","regions.html"],
+    ["Highest minimum wage (UMP)","Jakarta, Rp5,396,761/month","2025","Permenaker No. 16/2024","regions.html"]
+  ]
 };
-
-/* Helper: sorted list of years covered by the annual series. */
-DATA.years = Object.keys(DATA.byYear).map(Number).sort(function (a, b) { return a - b; });
